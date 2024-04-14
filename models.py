@@ -1,5 +1,6 @@
-from flask_sqlalchemy import SQLAlchemy
+from flask_sqlalchemy import SQLAlchemy 
 from flask_bcrypt import check_password_hash
+from sqlalchemy import CheckConstraint
 
 db = SQLAlchemy()
 
@@ -11,10 +12,16 @@ class UserModel(db.Model):
     last_name = db.Column(db.String, nullable=False)
     phone = db.Column(db.String, nullable=False, unique=True)
     email = db.Column(db.String, nullable=False, unique=True)
-    role = db.Column(db.String, nullable=False)
+    role = db.Column(db.String, nullable=False,default='member')
     password = db.Column(db.String, nullable=False)
     created_at = db.Column(db.TIMESTAMP, server_default=db.func.now())
     updated_at = db.Column(db.TIMESTAMP, onupdate=db.func.now())
+    
+    
+    # Ensure role is either 'member' or 'admin'
+    __table_args__ = (
+        CheckConstraint(role.in_(['member', 'admin']), name='valid_role'),
+    )
     
     def check_password(self, plain_password):
         return check_password_hash(self.password, plain_password)

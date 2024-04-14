@@ -93,6 +93,7 @@ class Signup(Resource):
     parser.add_argument('phone',type=str, required=True, help="Phone number is required")
     parser.add_argument('email',type=str, required=True, help="Email address is required")
     parser.add_argument('password',type=str, required=True, help="Password is required")
+    parser.add_argument('role',type=str, required=False, help="Role is required")
 
     @marshal_with(response_field)
     def post(self):
