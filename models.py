@@ -35,6 +35,7 @@ class PropertyModel(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.Text, nullable=False)
     description = db.Column(db.String, nullable=False)
+    image = db.Column(db.String, nullable=False)
     price = db.Column(db.Integer, nullable=False)
     bedrooms = db.Column(db.Integer, nullable=False)
     bathrooms = db.Column(db.Integer, nullable=False)
