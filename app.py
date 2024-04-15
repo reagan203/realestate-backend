@@ -26,7 +26,7 @@ app.config['MAIL_PORT'] = 587
 app.config['MAIL_USE_TLS'] = True
 app.config['MAIL_USE_SSL'] = False
 app.config['MAIL_USERNAME'] = 'reaganm746@@gmail.com'
-app.config['MAIL_PASSWORD'] = 'reagan2002#'
+app.config['MAIL_PASSWORD'] = '123456'
 
 # enable CORS
 CORS(app)
